@@ -119,14 +119,14 @@
 @section('scripts')
 <script>
     /** add active class and stay opened when selected */
-   var url = window.location;
-   const allLinks = document.querySelectorAll('.nav-item a');
-   const currentLink = [...allLinks].filter(e => {
-     return e.href == url;
-   });
+    var url = window.location;
+    const allLinks = document.querySelectorAll('.nav-item a');
+    const currentLink = [...allLinks].filter(e => {
+        return e.href == url;
+    });
 
-   currentLink[0].classList.add("active")
-   currentLink[0].closest(".nav-treeview").style.display="block";
-   currentLink[0].closest(".has-treeview").classList.add("active");
+    currentLink[0].classList.add("active")
+    currentLink[0].closest(".nav-treeview").style.display="block";
+    currentLink[0].closest(".has-treeview").classList.add("active");
 </script>
 @endsection

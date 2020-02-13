@@ -16,6 +16,24 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'role:admin'], function() {
+    //Roles
+    Route::get('/role', 'Admin\RoleController@index')->name('admin.roles.index');
+    Route::put('role/{id}', 'Admin\RoleController@update')->name('admin.roles.update');
+    Route::post('/role', 'Admin\RoleController@store')->name('admin.roles.store');
+    Route::get('/role/{id}/edit', 'Admin\RoleController@edit')->name('admin.roles.edit');
+    Route::get('/role/{id}', 'Admin\RoleController@show')->name('admin.roles.show');
+    Route::get('/add-role', 'Admin\RoleController@create')->name('admin.roles.create');
+    Route::delete('/role/{id}', 'Admin\RoleController@destroy')->name('admin.roles.destroy');
+
+    //Permissions
+    Route::get('/permission', 'Admin\PermissionController@index')->name('admin.permissions.index');
+    Route::put('permission/{id}', 'Admin\PermissionController@update')->name('admin.permissions.update');
+    Route::post('/permission', 'Admin\PermissionController@store')->name('admin.permissions.store');
+    Route::get('/permission/{id}/edit', 'Admin\PermissionController@edit')->name('admin.permissions.edit');
+    Route::get('/permission/{id}', 'Admin\PermissionController@show')->name('admin.permissions.show');
+    Route::get('/add-permission', 'Admin\PermissionController@create')->name('admin.permissions.create');
+    Route::delete('/permission/{id}', 'Admin\PermissionController@destroy')->name('admin.permissions.destroy');
+
     //Categories
     Route::get('/category', 'Admin\CategoryController@index')->name('admin.nom.category.index');
     Route::put('category/{id}', 'Admin\CategoryController@update')->name('admin.nom.category.update');
@@ -56,14 +74,13 @@ Route::group(['middleware' => 'role:admin'], function() {
     Route::get('/tickets', 'Tickets\TicketController@index')->name('admin.ticket.index');
     Route::get('/ticket/{id}', 'Tickets\TicketController@show')->name('admin.ticket.show');
     Route::post('close_ticket/{id}', 'Tickets\TicketController@close')->name('admin.close.ticket');
+    Route::delete('/ticket/{id}', 'Tickets\TicketController@destroy')->name('admin.ticket.destroy');
 
     //Users
     Route::get('/users', 'Admin\UsersController@index')->name('admin.users.index');
-    Route::put('user/{id}', 'Admin\UsersController@update')->name('admin.users.update');
-    Route::post('/users', 'Admin\UsersController@store')->name('admin.users.store');
     Route::get('/user/{id}/edit', 'Admin\UsersController@edit')->name('admin.users.edit');
+    Route::put('user/{id}', 'Admin\UsersController@update')->name('admin.users.update');
     Route::get('/user/{id}', 'Admin\UsersController@show')->name('admin.users.show');
-    Route::get('/add-user', 'Admin\UsersController@create')->name('admin.users.create');
     Route::delete('/user/{id}', 'Admin\UsersController@destroy')->name('admin.users.destroy');
 });
 

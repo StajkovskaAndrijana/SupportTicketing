@@ -102,14 +102,16 @@ class TicketController extends Controller
     public function show($id)
     {
         $ticket = Ticket::find($id);
-        return view('admin.ticket.show')->with('ticket', $ticket);
+        $docs = $ticket->documents()->get();
+        return view('admin.ticket.show', compact('ticket', 'docs'));
     }
 
     //Showing Users Created Ticket
     public function showUserTicket($id)
     {
         $ticket = Ticket::find($id);
-        return view('users.ticket.show')->with('ticket', $ticket);
+        $docs = $ticket->documents()->get();
+        return view('users.ticket.show', compact('ticket', 'docs'));
     }
 
     public function close($id) {
@@ -157,6 +159,9 @@ class TicketController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ticket = Ticket::find($id);
+        $ticket->delete();
+
+        return redirect('/tickets')->with('success', 'Ticket Has Been Successfully Deleted');
     }
 }

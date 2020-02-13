@@ -42,7 +42,7 @@
                                         <button type="submit" value="delete" class="btn btn-danger mr-1">
                                             <i class="fa fa-fw fa-times mr-1"></i> Delete
                                         </button>
-                                </form>
+                                    </form>
                                 </div>
                             </div>
                         </div>

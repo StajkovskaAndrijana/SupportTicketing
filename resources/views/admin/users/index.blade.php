@@ -2,21 +2,7 @@
 
 @section('content')
 @include('incs.messages')
-<div class="content-header">
-    <div class="container">
-        <div class="row mb-3 mt-3">
-            <div class="col-12">
-                <a href="{{ route('admin.users.create') }}">
-                    <button type="button" class="btn btn-success mr-1">
-                        <i class="fa fa-fw fa-plus mr-1"></i> Create New User
-                    </button>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="content">
+<div class="content mt-5">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -53,6 +39,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{ $users->render() }}
                         </div>
                         @else
                             <p>There are currently no users.</p>

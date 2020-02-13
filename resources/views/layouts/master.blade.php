@@ -13,6 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/lightbox/css/lightbox.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css">
 
     <!-- Google Font: Source Sans Pro -->
@@ -59,6 +60,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- ./wrapper -->
 
     <script src="/js/app.js"></script>
+    <script src="/lightbox/js/lightbox-plus-jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
     @yield('scripts')
 

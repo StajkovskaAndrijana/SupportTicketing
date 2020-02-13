@@ -45,7 +45,7 @@ class Ticket extends Model
 
     public function documents()
     {
-        return $this->hasMany(Document::class);
+        return $this->hasMany(Document::class, 'id_ticket', 'id');
     }
 
     public function user()

@@ -14,6 +14,8 @@
 <li>Run <strong>php artisan key:generate</strong></li>
 <li>Run <strong>php artisan migrate --seed</strong> (it has some seeded data for your testing)</li>
 <li>That's it: launch the main URL</li>
+<li>If you want to login use credentials email: <strong><a href="mailto:admin@admin.com">admin@admin.com</a></strong> and password: <strong>secret</strong></li>
+<li>User's credentials are email: <strong><a href="mailto:user@user.com">user@user.com</a></strong> and password: <strong>secret1</strong></li>
 </ul>
 
 

@@ -21,7 +21,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::all();
+        $tickets = Ticket::paginate(10);
         return view('admin.ticket.index')->with('tickets', $tickets);
     }
 

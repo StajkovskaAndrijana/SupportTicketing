@@ -61,6 +61,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{ $tickets->render() }}
                         </div>
                         @else
                             <p>You have not created any tickets.</p>

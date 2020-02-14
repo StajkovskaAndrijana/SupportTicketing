@@ -32,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/login';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -76,25 +76,7 @@ class RegisterController extends Controller
         $role = Role::select('id')->where('name', 'Normal User')->first();
 
         $user->roles()->attach($role);
-    }
 
-    /**
-    *Handle a registration request for the application.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return \Illuminate\Http\Response
-    */
-    public function register(Request $request)
-    {
-        $validator = $this->validator($request->all());
-
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
-        }
-
-        session()->flash('success', 'You have Successfully Registered. You can now Sign in');
-        return redirect('/login');
+        return $user;
     }
 }

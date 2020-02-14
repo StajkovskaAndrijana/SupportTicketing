@@ -23,8 +23,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item">
-                    <a href="/home" class="nav-link">
+                <li class="nav-item dashboard">
+                    <a href="/" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>
@@ -125,6 +125,7 @@
         return e.href == url;
     });
 
+    $(".dashboard a").removeClass("active");
     currentLink[0].classList.add("active")
     currentLink[0].closest(".nav-treeview").style.display="block";
     currentLink[0].closest(".has-treeview").classList.add("active");

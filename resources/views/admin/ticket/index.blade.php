@@ -47,6 +47,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{ $tickets->render() }}
                         </div>
                         @else
                             <p>There are currently no tickets.</p>

@@ -14,10 +14,6 @@
 
 <body class="hold-transition login-page">
     <div class="login-box">
-        {{-- <div class="alert alert-success alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h5><i class="icon fas fa-check"></i>{{Session::get('success')}}</h5>
-        </div> --}}
         <div class="login-logo">
             <span><b>Support Ticketing</b></span>
         </div>

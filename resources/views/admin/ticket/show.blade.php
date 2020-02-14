@@ -10,7 +10,7 @@
                     <div class="card-header">
                         <h2 class="float-md-left">{{$ticket->name}}</h2>
                         @if($ticket->status->name == 'Open')
-                            <button type="button" class="btn btn-danger float-md-right" data-toggle="modal" data-target="#close-ticket">Close Ticket</button>
+                            <button type="button" class="btn btn-warning float-md-right" data-toggle="modal" data-target="#close-ticket">Close Ticket</button>
                         @else
                         <button type="button" class="btn btn-danger float-md-right" data-toggle="modal" data-target="#delete-ticket">Delete Ticket</button>
                         @endif

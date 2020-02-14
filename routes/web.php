@@ -91,3 +91,5 @@ Route::group(['middleware' => 'role:normal_user'], function() {
 
 //Comments for Ticket
 Route::post('/comment', 'Tickets\CommentController@postComment')->name('ticket.comment');
+
+

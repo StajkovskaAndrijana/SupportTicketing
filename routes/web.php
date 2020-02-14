@@ -17,20 +17,18 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'role:admin'], function() {
     //Roles
-    Route::get('/role', 'Admin\RoleController@index')->name('admin.roles.index');
+    Route::get('/roles', 'Admin\RoleController@index')->name('admin.roles.index');
     Route::put('role/{id}', 'Admin\RoleController@update')->name('admin.roles.update');
-    Route::post('/role', 'Admin\RoleController@store')->name('admin.roles.store');
+    Route::post('/roles', 'Admin\RoleController@store')->name('admin.roles.store');
     Route::get('/role/{id}/edit', 'Admin\RoleController@edit')->name('admin.roles.edit');
-    Route::get('/role/{id}', 'Admin\RoleController@show')->name('admin.roles.show');
     Route::get('/add-role', 'Admin\RoleController@create')->name('admin.roles.create');
     Route::delete('/role/{id}', 'Admin\RoleController@destroy')->name('admin.roles.destroy');
 
     //Permissions
-    Route::get('/permission', 'Admin\PermissionController@index')->name('admin.permissions.index');
+    Route::get('/permissions', 'Admin\PermissionController@index')->name('admin.permissions.index');
     Route::put('permission/{id}', 'Admin\PermissionController@update')->name('admin.permissions.update');
-    Route::post('/permission', 'Admin\PermissionController@store')->name('admin.permissions.store');
+    Route::post('/permissions', 'Admin\PermissionController@store')->name('admin.permissions.store');
     Route::get('/permission/{id}/edit', 'Admin\PermissionController@edit')->name('admin.permissions.edit');
-    Route::get('/permission/{id}', 'Admin\PermissionController@show')->name('admin.permissions.show');
     Route::get('/add-permission', 'Admin\PermissionController@create')->name('admin.permissions.create');
     Route::delete('/permission/{id}', 'Admin\PermissionController@destroy')->name('admin.permissions.destroy');
 

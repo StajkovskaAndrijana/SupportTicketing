@@ -26,7 +26,6 @@
 
                             <div class="form-group">
                                 {{Form::label('body', 'Body')}}
-                                <span class="text-danger">*</span>
                                 {{Form::textarea('body', $category->description, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
                             </div>
                             {{Form::submit('Submit', ['class'=>'btn btn-success mt-4'])}}

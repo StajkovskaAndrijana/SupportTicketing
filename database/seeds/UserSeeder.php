@@ -20,8 +20,8 @@ class UserSeeder extends Seeder
         $manageUsers = Permission::where('slug','manage-users')->first();
 
         $user1 = new User();
-        $user1->name = 'Andrijana Stajkovska';
-        $user1->email = 'stajkovskaa@gmail.com';
+        $user1->name = 'Admin';
+        $user1->email = 'admin@admin.com';
         $user1->password = bcrypt('secret');
         $user1->save();
         $user1->roles()->attach($admin);
@@ -29,8 +29,8 @@ class UserSeeder extends Seeder
 
 
         $user2 = new User();
-        $user2->name = 'Filip Uroshevski';
-        $user2->email = 'urosevskifmy@gmail.com';
+        $user2->name = 'Normal User';
+        $user2->email = 'user@user.com';
         $user2->password = bcrypt('secret1');
         $user2->save();
         $user2->roles()->attach($normal_user);

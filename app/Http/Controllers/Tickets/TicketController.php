@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Tickets;
 
+use App\Mailers\AppMailer;
 use App\Models\Tickets\Type;
 use Illuminate\Http\Request;
 use App\Models\Tickets\Status;
@@ -52,7 +53,7 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, AppMailer $mailer)
     {
         $this->validate($request, [
             'name' => 'required',
@@ -90,6 +91,8 @@ class TicketController extends Controller
         $docUpload->path = 'images/'.$doc->getClientOriginalName();
         $docUpload->save();
 
+        $mailer->sendTicketInformation(Auth::user(), $ticket);
+
         return redirect('/mytickets')->with("success", "A Ticket with ID: #$ticket->id has been opened.");
     }
 
@@ -114,7 +117,7 @@ class TicketController extends Controller
         return view('users.ticket.show', compact('ticket', 'docs'));
     }
 
-    public function close($id) {
+    public function close($id, AppMailer $mailer) {
         $ticket = Ticket::find($id);
         $statuses = Status::where('name', 'Closed')->get();
 
@@ -124,6 +127,9 @@ class TicketController extends Controller
 
         $ticket->id_status = $statusId;
         $ticket->save();
+
+        $ticketOwner = $ticket->user;
+        $mailer->sendTicketStatusNotification($ticketOwner, $ticket);
 
         return redirect()->back()->with("success", "The ticket has been closed.");
     }

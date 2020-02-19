@@ -16,6 +16,9 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'role:admin'], function() {
+    //Dashboard
+    Route::get('/dashboard', 'DashboardController@adminDashboard')->name('admin.dashboard');
+
     //Roles
     Route::get('/roles', 'Admin\RoleController@index')->name('admin.roles.index');
     Route::put('role/{id}', 'Admin\RoleController@update')->name('admin.roles.update');
@@ -83,6 +86,10 @@ Route::group(['middleware' => 'role:admin'], function() {
 });
 
 Route::group(['middleware' => 'role:normal_user'], function() {
+    //Dashboard
+    Route::get('/mydashboard', 'DashboardController@userDashboard')->name('users.dashboard');
+
+    //Tickets
     Route::get('/mytickets', 'Tickets\TicketController@userTickets')->name('users.ticket.index');
     Route::get('/open-ticket', 'Tickets\TicketController@create')->name('users.ticket.create');
     Route::post('/mytickets', 'Tickets\TicketController@store')->name('users.ticket.store');

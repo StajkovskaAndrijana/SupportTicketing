@@ -14,8 +14,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/lightbox/css/lightbox.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css">
-
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -61,8 +60,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <script src="/js/app.js"></script>
     <script src="/lightbox/js/lightbox-plus-jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
+    <script src="/vendor/Chart.min.js"></script>
+    <script src="/vendor/create-charts.js"></script>
     @yield('scripts')
-
 </body>
 </html>

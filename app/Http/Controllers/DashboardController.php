@@ -2,83 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+
 use Illuminate\Http\Request;
+use App\Models\Tickets\Status;
+use App\Models\Tickets\Ticket;
+use Illuminate\Support\Facades\Auth;
+use App\Charts\SampleChart;
 
 class DashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function adminDashboard()
     {
+        $noUsers = User::all()->count();
+        $noTickets = Ticket::all()->count();
 
+        $social_users=Ticket::selectRaw('count(id_status) as count,id_status')->groupBy('id_status')->get();
+        $data=array();
+        foreach ($social_users as $result) {
+            $data[$result->id_status]=(int)$result->count;
+        }
+
+
+        return view('home', compact('noUsers', 'noTickets'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function userDashboard()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $myTickets = Ticket::where('id_user', Auth::user()->id)->count();
+        return view('home')->with('myTickets', $myTickets);
     }
 }

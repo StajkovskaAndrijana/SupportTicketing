@@ -12,6 +12,7 @@ use App\Models\Tickets\Document;
 use App\Models\Tickets\Priority;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Tickets\StatusNotification;
 
 class TicketController extends Controller
 {
@@ -117,6 +118,7 @@ class TicketController extends Controller
         return view('users.ticket.show', compact('ticket', 'docs'));
     }
 
+    //Closing Ticket
     public function close($id, AppMailer $mailer) {
         $ticket = Ticket::find($id);
         $statuses = Status::where('name', 'Closed')->get();
@@ -127,6 +129,11 @@ class TicketController extends Controller
 
         $ticket->id_status = $statusId;
         $ticket->save();
+
+        $statusNotification = new StatusNotification();
+        $statusNotification->id_user = Auth::user()->id;
+        $statusNotification->id_status = $statusId;
+        $statusNotification->save();
 
         $ticketOwner = $ticket->user;
         $mailer->sendTicketStatusNotification($ticketOwner, $ticket);
